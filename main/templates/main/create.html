@@ -15,20 +15,24 @@ New List
 {% endblock %}
 
 {% block content %}
+<div class="col-sm-4 mx-auto">
+<div align="center">
+    <hr class ="mt-0 mb-4">
+        <div id="navbarbrand"><h2>New List</h2></div>
+    <hr class ="mt-0 mb-4">
 
-<form method="post" action = '/create/' class = "form-group">
-    {% csrf_token %}
-    <div id="test" class= "input-group mb-3" style = {}>
-        <style type="text/css">
-        #test input {
-                width :500px;
-            }</style>
-        <div class="input-group-prepend">
-        <button type="submit", name="save" class = "btn btn-success">Create New</button>
+    <form method="post" action = '/create/' class = "form-group">
+        {% csrf_token %}
+        <div id="test" class= "input-group mb-3">
+            <div class="input-group-prepend">
+            <button type="submit", name="save" class = "btn btn-success">Create New</button>
+            </div>
+            {{form.name}}
         </div>
-        {{form.name}}
-    </div>
-</form>
+    </form>
+</div>
+</div>
+
 {% endblock %}
 
 

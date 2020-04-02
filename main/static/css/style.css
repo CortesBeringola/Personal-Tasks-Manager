@@ -1,0 +1,66 @@
+#test input {
+                width :80%;
+            }
+
+#textinput input {
+                width :300px;
+                height: 50px;
+                 }
+#checkbox input {
+                width :20px;
+                height: 20px;
+
+                 }
+#addinput input {
+                width :255px;
+                height: 40px;
+                }
+#navbarbrand h2 {
+                font-family: Comic Sans MS, cursive, sans-serif;
+}
+
+.sidenav {
+    height:100%;
+    width: 160;
+    position: fixed;
+    z-index:1;
+    top:0;
+    left:0;
+    background-color:#111;
+    overflow-x: :hidden;
+    padding-top:20px;
+}
+
+.sidenav a {
+    padding:6px 8px 6px 16px;
+    text-decoration: none;
+    font-size:25px;
+    color: #818181;
+    display:block;
+}
+
+.sidenav a:hover{
+    color:#f1f1f1;
+}
+
+.main {
+    margin-left:160px;
+    padding: 0px 10 px;
+}
+
+flex-container {
+    display: flex;             /* primary flex container */
+    flex-direction: row;       /* horizontal alignment of flex items
+                                      (default value; can be omitted) */
+    align-items: stretch;      /* will apply equal heights to flex items
+                                      (default value; can be omitted) */
+    height: 100%;
+}
+
+flex-item {
+            /* nested flex container */
+    flex-direction: column;    /* vertical alignment of flex items */
+    justify-content: center;   /* center flex items vertically */
+    align-items: center;       /* center flex items horizontally */
+}
+

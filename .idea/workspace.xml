@@ -2,8 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="420ad8a0-71c0-4b0c-8c3a-bf7b53a16c7d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/main/static/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/todolist/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/todolist/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/templates/main/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/main/templates/main/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/templates/main/create.html" beforeDir="false" afterPath="$PROJECT_DIR$/main/templates/main/create.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/templates/main/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/main/templates/main/list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/templates/main/view.html" beforeDir="false" afterPath="$PROJECT_DIR$/main/templates/main/view.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/register/templates/register/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/register/templates/register/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/register/templates/registration/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/register/templates/registration/login.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,10 +63,10 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="229" y="89" key="SettingsEditor" timestamp="1585771210235">
+    <state x="229" y="89" key="SettingsEditor" timestamp="1585843792583">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="229" y="89" key="SettingsEditor/0.0.1440.900/-1920.-180.1920.1080@0.0.1440.900" timestamp="1585771210235" />
+    <state x="229" y="89" key="SettingsEditor/0.0.1440.900/-1920.-180.1920.1080@0.0.1440.900" timestamp="1585843792583" />
     <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1585704745486">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
