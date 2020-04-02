@@ -1,0 +1,47 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+
+{% block title %}
+View List
+{% endblock %}
+
+{% block styles %}
+    <style>
+        body {
+          background: url('{% static "img/111.jpg" %}') no-repeat center center fixed;
+                }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <h1>{{ls.name}}</h1>
+    <form method = "POST" action ="#">
+        {% csrf_token %}
+
+        {% for item in ls.item_set.all %}
+        <div class="input-group mb-3">
+            <div class = "input-group-prepend">
+                <div class="input-group-text">
+                {% if item.complete == True %}
+                {#  c.{{item.id}} puts a C infront every item id. This will make things easier #}
+                    <input type="checkbox", value="clicked",width= '100%', name="c{{item.id}}" checked>
+                {% else %}
+                    <input type="checkbox", value="clicked", name="c{{item.id}}">
+                {% endif%}
+                </div>
+            </div>
+            <input type="text", value="{{item.text}}",width= 200px class = "form=control">
+        </div>
+        {% endfor %}
+
+        <div class = "input-group mb-3">
+            <div class="input-group-prepend">
+                <button type="submit", name="newItem", value="newItem", class="btn btn-success">Add Item</button>
+            </div>
+            <input type="text", name="new">
+        </div>
+         <button type="submit", name="save", value="save" class="btn btn-success">Save</button>
+    </form>
+{% endblock %}
+

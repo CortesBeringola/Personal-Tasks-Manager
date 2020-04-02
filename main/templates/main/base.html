@@ -1,0 +1,89 @@
+{% load static %}
+
+<html>
+<head>
+
+        <style type="text/css">
+            .sidenav {
+                height:100%;
+                width: 160;
+                position: fixed;
+                z-index:1;
+                top:0;
+                left:0;
+                background-color:#111;
+                overflow-x: :hidden;
+                padding-top:20px;
+            }
+
+            .sidenav a {
+                padding:6px 8px 6px 16px;
+                text-decoration: none;
+                font-size:25px;
+                color: #818181;
+                display:block;
+            }
+
+            .sidenav a:hover{
+                color:#f1f1f1;
+            }
+
+            .main {
+                margin-left:160px;
+                padding: 0px 10 px;
+            }
+       </style>
+
+{% block styles %}
+  <style>
+     body {
+       background: url('{% static "img/11.jpg" %}') no-repeat center center fixed;
+     }
+  </style>
+{% endblock %}
+
+        <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>{% block title %}Rafa's Web Site {% endblock %}</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+        <a class="navbar-brand" href="/"><h2 style="
+  font-family: Comic Sans MS, cursive, sans-serif;
+">Personal Tasks Assistant</h2></a>
+        <a href="/create/">New List</a>
+        <a href="/view/">My Lists</a>
+        <a href="/logout/ "style ="color:black">Logout</a>
+
+        <span class="navbar-text">
+            {% if request.user.is_authenticated %}
+                <h3>Hello, {{request.user.username}}</h3>
+            {% else %}
+                <h4><a href="/login"><u>Login</u></a></h4>
+            {%endif%}
+        </span>
+    </nav>
+
+
+    <div id="content", name="content", class="main mt-3">
+        <div class ="row justify-content-center">
+            <div class = "col-5">
+                    <hr class ="mt-0 mb-4">
+
+                        {% block content%}
+                        {% endblock%}
+
+
+            </div>
+        </div>
+    </div>
+ <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>

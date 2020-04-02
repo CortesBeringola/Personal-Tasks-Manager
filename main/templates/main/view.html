@@ -1,0 +1,35 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+
+{% block title %}View{% endblock %}
+
+{% block styles %}
+    <style>
+        body {
+          background: url('{% static "img/111.jpg" %}') no-repeat center center fixed;
+                }
+    </style>
+{% endblock %}
+
+
+{%block content%}
+<div class="container">
+    <table class="table table-striped" width=30%>
+        <thead class="thead-dark" align="center">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Your Lists</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for td in user.todolist.all %}
+            <tr>
+                <td scope="row" align="center"><h4>{{ forloop.counter }}</h4></td>
+                <td scope="row" align="center"><a href="/{{td.id}}"><h4>{{td.name}}</h4></a></td>
+            </tr>
+             {% endfor %}
+        </tbody>
+    </table>
+</div>
+{%endblock%}
