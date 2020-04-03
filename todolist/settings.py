@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'main.apps.MainConfig',
     'register.apps.RegisterConfig',
+    'plots.apps.PlotsConfig',
 ]
 
 MIDDLEWARE = [
@@ -59,7 +60,8 @@ ROOT_URLCONF = 'todolist.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [TEMPLATE_DIR],
+        'DIRS': [TEMPLATE_DIR,
+                 os.path.join(BASE_DIR, 'plots', 'templates', 'plots')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

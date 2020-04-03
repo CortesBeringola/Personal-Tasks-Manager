@@ -1,0 +1,90 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block styles %}
+    <style>
+        body {
+          background: url('{% static "img/111.jpg" %}') no-repeat center center fixed;
+                }
+    </style>
+{% endblock %}
+
+
+
+{% block title %}
+New List
+{% endblock %}
+
+
+{% block content %}
+<div class = "row">
+<div class="col-sm-8 mx-auto">
+<div align="center">
+    <hr class ="mt-0 mb-4">
+        <div id="navbarbrand"><h2>New expense</h2></div>
+    <hr class ="mt-0 mb-4">
+    <div>
+<div style="width: 40%; float:left">
+    <form method="post" action = "#" class = "form-group">
+        {% csrf_token %}
+        <div id="test" class= "input-group mb-3">
+            <div>
+                <table class="table table-striped" width=30%>
+                    <thead class="thead-dark" align="center">
+                        <tr>
+                            <th scope="col">Expense</th>
+                            <th scope="col">Amount</th>
+                            <th scope="col">Month</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                         <tr>
+                            <td scope="row" align="center"><h4>{{form.name}}</h4></td>
+                            <td scope="row" align="center"><h4>{{form.amount}}</h4></td>
+                             <td scope="row" align="center"><h4>{{form.month}}</h4></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <button type="submit", name="save" class = "btn btn-success">Add Expense</button>
+        </div>
+    </form>
+</div>
+    <div style="width: 60%; float:right">
+        <table class="table table-striped" width=30%>
+                    <thead class="thead-dark" align="center">
+                        <tr>
+                            <th scope="col">Expense</th>
+                            <th scope="col">Amount</th>
+                            <th scope="col">Month</th>
+                            <th scope="col">Exact Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for item in last_ten_expenses%}
+                         <tr>
+                            <td scope="row" align="center">{{item.name}}</td>
+                            <td scope="row" align="center">{{item.amount}}</td>
+                             <td scope="row" align="center">{{item.month}}</td>
+                             <td scope="row" align="center">{{item.added_date}}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+    </div>
+        </div>
+</div>
+</div>
+</div>
+
+
+<div class="row">
+    <div class="col-sm-4 mx-auto">
+  <div style="width:500px;height:400px;">
+    {% autoescape off %}
+    {{ plot_div }}
+    {% endautoescape %}
+  </div>
+        </div>
+</div>
+{%endblock%}
