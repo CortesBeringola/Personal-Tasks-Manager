@@ -5,7 +5,7 @@ from .forms import CreateNewExpense
 from datetime import datetime
 import re
 from django.http import HttpResponse, HttpResponseRedirect
-from plotly.graph_objs import Scatter
+from plotly.graph_objs import Bar
 from django.utils import timezone
 
 
@@ -13,10 +13,9 @@ from django.utils import timezone
 
 def plotting(response):
 
-    x_data = [0, 1, 2, 3]
-    y_data = [x ** 2 for x in x_data]
-    plot_div = plot([Scatter(x=x_data, y=y_data, mode='lines', name='test', opacity=0.8, marker_color='green')],
-                    output_type='div')
+    x_data = ['Jan', 'Feb', 'Mar','Apr','May']
+    y_data = [3300,2033,3400,1200,2000]
+    plot_div = plot([Bar(x=x_data, y=y_data,hovertext=['27% market share', '24% market share', '19% market share'])],output_type='div')
     all_expenses = response.user.expenses.values_list('month','amount')
     months = set(response.user.expenses.values_list('month'))
     months = list(months)
