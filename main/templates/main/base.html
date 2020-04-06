@@ -20,32 +20,28 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
-        <a id="navbarbrand" class="navbar-brand" href="/"><h3>Personal Tasks Assistant</h3></a>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a id="navbarbrand" class="navbar-brand" href="/"><h3><i>your</i>PersonalAssistant®</h3></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div id = "rf">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item dropdown">
-                    <a id="navbarbrand" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        My Lists
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="/view/">View Lists</a>
-                      <a class="dropdown-item" href="/create/">Add List</a>
-                    </div>
+                <li class="nav-item">
+                    <a id="navbarlinks" class="nav-link mt-2" href="/view/"><h5><b><i>My Lists</i></b></h5></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/plotting/">My Expenses</a>
+                    <a id="navbarlinks" class="nav-link mt-2" href="/plotting/"><h5><b><i>My Expenses</i></b></h5></a>
                 </li>
             </ul>
+                </div>
         </div>
-        <a class="nav-link" href="/logout/" style="color:black;"><u>Logout</u></a>
-        <span class="navbar-text">
+        <a class="nav-link" href="/logout/" style="color:black;"><i><u>Logout</u></i></a>
+        <span id="navbarlinks" class="navbar-text">
             {% if request.user.is_authenticated %}
-                <h3>Hello, {{request.user.username}}</h3>
+                <h4><i>Hello, {{request.user.username}}</i></h4>
             {% else %}
                 <h4><a href="/login"><u>Login</u></a></h4>
             {%endif%}
@@ -53,35 +49,7 @@
     </nav>
 
 
-
-
-
-
-
-
-
-
-
-
-
-<!--    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">-->
-<!--        <a class="navbar-brand" href="/">-->
-<!--            <div id="navbarbrand"><h2>Personal Tasks Assistant</h2></div>-->
-<!--        </a>-->
-<!--        <a href="/create/">New List</a>-->
-<!--        <a href="/view/">My Lists</a>-->
-
-<!--            <a class="nav-link dropdown-toggle" data-toggle="dropdown">Test</a>-->
-<!--                <ul class="dropdown-menu">-->
-<!--                        <li><a class="dropdown-item" href="#">Action</a></li>-->
-<!--                        <li><a class="dropdown-item" href="#">Another action</a></li>-->
-<!--                </ul>-->
-
-<!--        <a href="/logout/ "style ="color:black">Logout</a>-->
-
-<!--    </nav>-->
-
-    <div id="content", name="content", class="flex-container main mt-3">
+    <div id="content", name="content", class="flex-container mt-3">
         {% block content%}
         {% endblock%}
     </div>

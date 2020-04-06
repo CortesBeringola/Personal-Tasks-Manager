@@ -11,29 +11,51 @@ from django.utils import timezone
 
 # Create your views here.
 
-def plotting(response):
-
-    x_data = ['Jan', 'Feb', 'Mar','Apr','May']
-    y_data = [3300,2033,3400,1200,2000]
-    plot_div = plot([Bar(x=x_data, y=y_data,hovertext=['27% market share', '24% market share', '19% market share'])],output_type='div')
-    all_expenses = response.user.expenses.values_list('month','amount')
+def make_a_list(response):
+    all_expenses = response.user.expenses.values_list('month', 'amount')
     months = set(response.user.expenses.values_list('month'))
     months = list(months)
-    # r = re.compile("'(.*?)'")
-    # months = list(filter(r.match, str(months)))
-    #final_expenses=[]
-    print(months)
+
+    new_months = []
+
     for month in months:
-        print(month)
-        # for item in all_expenses:
-        #     for element in item:
-        #         print(element)
-                # if element == month:
-                #     final_expenses[month]= final_expenses[month]+(element+1)
+        new_months.append(re.search("'(.*?)'", str(month)).group(1))
 
-    # print(final_expenses[0])
+    final_expenses = []
 
-    #print(all_expenses)
+    for index, month in enumerate(new_months):
+        final_expenses.append([])
+        for j in range(2):
+            if j == 0:
+                final_expenses[index].append(month)
+            else:
+                final_expenses[index].append(0)
+
+    for index, month in enumerate(new_months):
+        for item in all_expenses:
+            for idx, element in enumerate(item):
+                if element == month:
+                    final_expenses[index][1] += item[idx + 1]
+
+    return final_expenses
+
+
+def plotting(final_expenses):
+
+    x_data, y_data = map(list, zip(*final_expenses))
+
+    plot_div = plot([Bar(x=x_data, y=y_data, marker_color ="#f2722c", hovertext=['27% market share', '24% market share', '19% market share'])],
+                    output_type='div')
+
+    return plot_div
+
+def finance(response):
+
+
+    final_expenses = make_a_list(response)
+    plot_div = plotting(final_expenses)
+
+
     last_ten_expenses = response.user.expenses.all().order_by('-id')[:10]
     if response.method == "POST":
         form = CreateNewExpense(response.POST)
@@ -47,16 +69,13 @@ def plotting(response):
             response.user.expenses.add(e)
             form = CreateNewExpense()
             last_ten_expenses = response.user.expenses.all().order_by('-id')[:10]
-            # print(last_ten_expenses)
-            return render(response, "plots/plotting.html",{"form": form,
-                                                    'plot_div': plot_div,
-                                                    'last_ten_expenses': last_ten_expenses
-                                                    })
+            final_expenses = make_a_list(response)
+            plot_div = plotting(final_expenses)
+            return render(response, "plots/plotting.html", {"form": form,
+                                                            'plot_div': plot_div,
+                                                            'last_ten_expenses': last_ten_expenses})
     else:
         form = CreateNewExpense()
-
-
-    # print(last_ten_expenses)
     return render(response, "plots/plotting.html", {'form': form,
                                                     'plot_div': plot_div,
                                                     'last_ten_expenses': last_ten_expenses})

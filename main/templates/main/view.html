@@ -14,22 +14,80 @@
 
 
 {%block content%}
-<div class="container">
-    <table class="table table-striped" width=30%>
-        <thead class="thead-dark" align="center">
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Your Lists</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for td in user.todolist.all %}
-            <tr>
-                <td scope="row" align="center"><h4>{{ forloop.counter }}</h4></td>
-                <td scope="row" align="center"><a href="/{{td.id}}"><h4>{{td.name}}</h4></a></td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+
+
+
+<div class="col-sm-6 mx-auto flex-container">
+    <hr class ="mt-0 mb-4">
+        <div id="navbarbrand" align="center"><h2>My Lists</h2></div>
+    <hr class ="mt-0 mb-4">
 </div>
+<div class="col-sm-11 mx-auto flex-container">
+    <section class = "row">
+        <section class="column">
+            <div>
+            <form method="post" action = '/create/' class = "form-group">
+                    {% csrf_token %}
+                    <div id="test" class= "container input-group">
+                        <div class="container input-group-prepend" >
+                        <button type="submit", name="save" class = "btn btn-success1">Create New</button>
+                        {{form.name}}
+                        </div>
+                    </div>
+            </form>
+                </div>
+        </section>
+        <section class="col-sm-6 flex-containerr">
+            <div>
+            <table class="table table-striped">
+                <thead align="center">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Your Lists</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for td in user.todolist.all %}
+                    <tr>
+                        <td scope="row" align="center"><h4 style="color:black" >{{ forloop.counter }}</h4></td>
+                        <td scope="row" align="center"><a href="/{{td.id}}"><h4 style="color:black">{{td.name}}</h4></a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+                </div>
+        </section>
+    </section>
+</div>
+
+
+
+
+
+
+
+
+
+
+<!--<div class="container col-sm-6 mx-auto">-->
+<!--    <hr class ="mt-0 mb-4">-->
+<!--        <div id="navbarbrand" align="center"><h2>Your Lists</h2></div>-->
+<!--    <hr class ="mt-0 mb-4">-->
+<!--    <table class="table table-striped" width=30%>-->
+<!--        <thead align="center">-->
+<!--            <tr>-->
+<!--                <th scope="col">#</th>-->
+<!--                <th scope="col">Your Lists</th>-->
+<!--            </tr>-->
+<!--        </thead>-->
+<!--        <tbody>-->
+<!--            {% for td in user.todolist.all %}-->
+<!--            <tr>-->
+<!--                <td scope="row" align="center"><h4>{{ forloop.counter }}</h4></td>-->
+<!--                <td scope="row" align="center"><a href="/{{td.id}}"><h4 style="color:black">{{td.name}}</h4></a></td>-->
+<!--            </tr>-->
+<!--            {% endfor %}-->
+<!--        </tbody>-->
+<!--    </table>-->
+<!--</div>-->
 {%endblock%}

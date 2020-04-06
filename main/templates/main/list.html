@@ -15,26 +15,22 @@ View List
 {% endblock %}
 
 {% block content %}
-<div class="col-sm-8 mx-auto">
-    <div class = row>
-        <flex-container>
-            <flex-item>
-        <div class="column mx-auto flex-item">
-            <hr class ="mt-0 mb-4">
-                <div id="navbarbrand"><h2>{{ls.name}}</h2></div>
-            <hr class ="mt-0 mb-4">
-        </div>
-            </flex-item>
-        </flex-container>
 
-        <div class="column mx-auto">
-            <form method = "POST" action ="#">
+
+<div class=" container col-sm-6 mx-auto">
+
+    <hr class ="mt-0 mb-4">
+        <div id="navbarbrand" align="center"><h2>{{ls.name}}</h2></div>
+    <hr class ="mt-0 mb-4">
+
+    <section  class="flex-container">
+        <form method = "POST" action ="#">
                 {% csrf_token %}
 
                 {% for item in ls.item_set.all %}
-                <div class="input-group mb-3">
+                <div class="input-group mb-3  ">
                     <div class = "input-group-prepend">
-                        <div id="checkbox" class="input-group-text align">
+                        <div id="checkbox" class="input-group-text">
                         {% if item.complete == True %}
                         {#  c.{{item.id}} puts a C infront every item id. This will make things easier #}
                             <input class ="mt-2" type="checkbox", value="clicked", name="c{{item.id}}" checked>
@@ -42,26 +38,89 @@ View List
                             <input class="mt-2", type="checkbox", value="clicked", name="c{{item.id}}">
                         {% endif%}
                         </div>
+                        <div id="textinput">
+                        <input type="text", value="{{item.text}}" class = "form=control">
+                        </div>
                     </div>
-                    <div id="textinput">
-                    <input type="text", value="{{item.text}}" class = "form=control">
-                    </div>
+
                 </div>
                 {% endfor %}
 
                 <div class = "input-group mb-3">
                     <div class="input-group-prepend">
-                        <button type="submit", name="newItem", value="newItem", class="btn btn-success">Add Item</button>
+                        <button type="submit", name="newItem", value="newItem", class="btn btn-success1">Add Item</button>
                     </div>
                     <div id="addinput">
                         <input type="text", name="new">
                     </div>
                 </div>
-                 <button type="submit", name="save", value="save" class="btn btn-success">Save</button>
+                 <button type="submit", name="save", value="save" class="btn btn-success1">Save</button>
             </form>
-        </div>
-    </div>
+    </section>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<div class="col-sm-8 mx-auto">-->
+<!--    <div class = row>-->
+<!--        <flex-container>-->
+<!--            <flex-item>-->
+<!--        <div class="column mx-auto flex-item">-->
+<!--            <hr class ="mt-0 mb-4">-->
+<!--                <div id="navbarbrand"><h2>{{ls.name}}</h2></div>-->
+<!--            <hr class ="mt-0 mb-4">-->
+<!--        </div>-->
+<!--            </flex-item>-->
+<!--        </flex-container>-->
+
+<!--        <div class="column mx-auto">-->
+<!--            <form method = "POST" action ="#">-->
+<!--                {% csrf_token %}-->
+
+<!--                {% for item in ls.item_set.all %}-->
+<!--                <div class="input-group mb-3">-->
+<!--                    <div class = "input-group-prepend">-->
+<!--                        <div id="checkbox" class="input-group-text align">-->
+<!--                        {% if item.complete == True %}-->
+<!--                        {#  c.{{item.id}} puts a C infront every item id. This will make things easier #}-->
+<!--                            <input class ="mt-2" type="checkbox", value="clicked", name="c{{item.id}}" checked>-->
+<!--                        {% else %}-->
+<!--                            <input class="mt-2", type="checkbox", value="clicked", name="c{{item.id}}">-->
+<!--                        {% endif%}-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div id="textinput">-->
+<!--                    <input type="text", value="{{item.text}}" class = "form=control">-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                {% endfor %}-->
+
+<!--                <div class = "input-group mb-3">-->
+<!--                    <div class="input-group-prepend">-->
+<!--                        <button type="submit", name="newItem", value="newItem", class="btn btn-success">Add Item</button>-->
+<!--                    </div>-->
+<!--                    <div id="addinput">-->
+<!--                        <input type="text", name="new">-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                 <button type="submit", name="save", value="save" class="btn btn-success">Save</button>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 
 {% endblock %}
 

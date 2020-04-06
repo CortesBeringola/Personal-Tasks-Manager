@@ -55,12 +55,7 @@ def create(response):
             t.save()
             response.user.todolist.add(t)
             # After saving I'm redirecting so as to see the list
-            return HttpResponseRedirect("/%i" %t.id)
+            return HttpResponseRedirect("/view")
     else:
         form = CreateNewList()
-    return render(response, "main/create.html", {"form":form})
-
-
-
-def view(response):
-    return render(response, "main/view.html", {})
+    return render(response, "main/view.html", {"form": form})

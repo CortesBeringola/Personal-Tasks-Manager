@@ -17,74 +17,72 @@ New List
 
 
 {% block content %}
-<div class = "row">
-<div class="col-sm-8 mx-auto">
-<div align="center">
+
+<div class="col-sm-6 mx-auto flex-container">
     <hr class ="mt-0 mb-4">
-        <div id="navbarbrand"><h2>New expense</h2></div>
+        <div id="navbarbrand" align="center"><h2>My Expenses</h2></div>
     <hr class ="mt-0 mb-4">
-    <div>
-<div style="width: 40%; float:left">
-    <form method="post" action = "#" class = "form-group">
-        {% csrf_token %}
-        <div id="test" class= "input-group mb-3">
-            <div>
-                <table class="table table-striped" width=30%>
-                    <thead class="thead-dark" align="center">
-                        <tr>
-                            <th scope="col">Expense</th>
-                            <th scope="col">Amount</th>
-                            <th scope="col">Month</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                         <tr>
-                            <td scope="row" align="center"><h4>{{form.name}}</h4></td>
-                            <td scope="row" align="center"><h4>{{form.amount}}</h4></td>
-                             <td scope="row" align="center"><h4>{{form.month}}</h4></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <button type="submit", name="save" class = "btn btn-success">Add Expense</button>
+    <section  class="flex-container">
+        <div class = "center-block">
+            <form method="post" action = "#" class = "form-group">
+                {% csrf_token %}
+                <div id="test" class= "input-group">
+                    <div class="input-group-prepend mx-auto">
+                        <button type="submit", name="save" class = "btn btn-success1 mb-3">Add Expense</button>
+                            <table class="table table-striped">
+                                <thead align="center">
+                                    <tr>
+                                        <th scope="col">Expense</th>
+                                        <th scope="col">Amount</th>
+                                        <th scope="col">Month</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                     <tr>
+                                        <td scope="row" align="center"><h4>{{form.name}}</h4></td>
+                                        <td scope="row" align="center"><h4>{{form.amount}}</h4></td>
+                                         <td scope="row" align="center"><h4>{{form.month}}</h4></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                    </div>
+                </div>
+            </form>
+
         </div>
-    </form>
+    </section>
 </div>
-    <div style="width: 60%; float:right">
-        <table class="table table-striped" width=30%>
-                    <thead class="thead-dark" align="center">
-                        <tr>
-                            <th scope="col">Expense</th>
-                            <th scope="col">Amount</th>
-                            <th scope="col">Month</th>
-                            <th scope="col">Exact Time</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    {% for item in last_ten_expenses%}
-                         <tr>
-                            <td scope="row" align="center">{{item.name}}</td>
-                            <td scope="row" align="center">{{item.amount}}</td>
-                             <td scope="row" align="center">{{item.month}}</td>
-                             <td scope="row" align="center">{{item.added_date}}</td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
-    </div>
-        </div>
-</div>
-</div>
+<div class="col-sm-10 mx-auto flex-container">
+    <section class = "row ">
+        <section id="col1" class="column">
+            <table class="table table-striped">
+                <thead align="center">
+                    <tr>
+                        <th scope="col">Expense</th>
+                        <th scope="col">Amount</th>
+                        <th scope="col">Month</th>
+                        <th scope="col">Exact Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for item in last_ten_expenses%}
+                     <tr>
+                        <td scope="row" align="center">{{item.name}}</td>
+                        <td scope="row" align="center">{{item.amount}}</td>
+                         <td scope="row" align="center">{{item.month}}</td>
+                         <td scope="row" align="center">{{item.added_date}}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </section>
+
+        <section id="col2" class="column" >
+            {% autoescape off %}
+            {{ plot_div }}
+            {% endautoescape %}
+        </section>
+    </section>
 </div>
 
-
-<div class="row">
-    <div class="col-sm-7 mx-auto">
-  <div style="width:600px;height:400px;">
-    {% autoescape off %}
-    {{ plot_div }}
-    {% endautoescape %}
-  </div>
-        </div>
-</div>
 {%endblock%}

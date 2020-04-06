@@ -1,9 +1,10 @@
 #test input {
-                width :60%;
+                width :100%;
             }
 
 #textinput input {
-                width :300px;
+                display:flex;
+                width : 200%;
                 height: 50px;
                  }
 #checkbox input {
@@ -28,22 +29,93 @@
     padding: 0px 10 px;
 }
 
-.navbar{
-    background-color: black;
+.navbar-light{
+    background-color: #56498E;
+
 }
+
+.navbar-light h3,a{
+    color:white;
+}
+
 flex-container {
     display: flex;             /* primary flex container */
     flex-direction: row;       /* horizontal alignment of flex items
                                       (default value; can be omitted) */
     align-items: stretch;      /* will apply equal heights to flex items
-                                      (default value; can be omitted) */
+                                   (default value; can be omitted) */
     height: 100%;
+    justify-content: center;
 }
 
 flex-item {
             /* nested flex container */
-    flex-direction: column;    /* vertical alignment of flex items */
-    justify-content: center;   /* center flex items vertically */
-    align-items: center;       /* center flex items horizontally */
+     /* vertical alignment of flex items */
+     /* center flex items vertically */
+    align-items: stretch;       /* center flex items horizontally */
 }
 
+.row {
+    display:flex;
+
+}
+
+#col1 section {
+    -webkit-column-width: 50%;
+    -moz--column-width: 50%;
+    column-width: 50%;
+  }
+
+#col2 section {
+    -webkit-column-width: 50%;
+    -moz--column-width: 50%;
+    column-width: 50%;
+
+}
+
+
+.container{
+    align-items: stretch;
+
+}
+
+.input-group-text {
+    background-color:#56498E;
+
+}
+
+.table-striped thead th{
+    background:#56498E;
+    color:white;
+}
+
+.btn-success1{
+    background:#f2722c;
+    color:white;
+}
+
+#space container{
+
+    justify-content: space-between:
+
+}
+
+flex-container2 {
+    display: flex;             /* primary flex container */
+    flex-direction: row;       /* horizontal alignment of flex items
+                                      (default value; can be omitted) */
+    align-items: stretch;      /* will apply equal heights to flex items
+                                   (default value; can be omitted) */
+    height: 100%;
+    justify-content: space-around;
+}
+
+#navbarlinks h5, h4{
+    color:#f2722c;
+
+}
+
+#rf li {
+    display:inline;
+    padding: 5px 30px;
+}
