@@ -1,6 +1,7 @@
 from django import forms
 
-MONTH_CHOICES = [('JAN', 'JAN'), ('FEB', 'FEB'), ('MAR', 'MAR'), ('APR', 'APR'), ('MAY', 'MAY')]
+MONTH_CHOICES = [('Jan','Jan'), ('Feb', 'Feb'), ('Mar', 'Mar'), ('Apr', 'Apr'), ('May', 'May'), ('Jun', 'Jun'),
+                 ('Jul', 'Jul'),('Aug', 'Aug'), ('Sep', 'Sep'), ('Oct', 'Oct'), ('Nov', 'Nov'), ('Dec', 'Dec')]
 
 class CreateNewExpense(forms.Form):
 

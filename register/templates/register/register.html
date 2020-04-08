@@ -4,13 +4,6 @@
 
 {% load crispy_forms_tags %}
 
-{% block styles %}
-    <style>
-        body {
-          background: url('{% static "img/111.jpg" %}') no-repeat center center fixed;
-                }
-    </style>
-{% endblock %}
 
 
 {%block content%}
@@ -18,7 +11,7 @@
     <form method="POST" class="form-group ">
         {% csrf_token %}
         {{form|crispy}}
-        <button type="submit" class="btn btn-success">Register</button>
+        <button type="submit" class="btn btn-success1">Register</button>
     </form>
 </div>
 {%endblock%}

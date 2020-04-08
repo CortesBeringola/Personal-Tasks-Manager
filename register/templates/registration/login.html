@@ -5,13 +5,7 @@
 
 {% load crispy_forms_tags %}
 
-{% block styles %}
-    <style>
-        body {
-          background: url('{% static "img/111.jpg" %}') no-repeat center center fixed;
-                }
-    </style>
-{% endblock %}
+
 
 
 {% block content %}
@@ -21,7 +15,7 @@
         {{form|crispy}}
 
         <p>Don't have an account? Create one <a href="/register">here</a></p>
-        <button type="submit" class="btn btn-success">Login</button>
+        <button type="submit" class="btn btn-success1">Login</button>
     </form>
 </div>
 {% endblock %}

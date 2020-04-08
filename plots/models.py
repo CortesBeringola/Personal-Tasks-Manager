@@ -2,7 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-MONTH_CHOICES = (('JAN','JAN'), ('FEB', 'FEB'), ('MAR', 'MAR'), ('APR', 'APR'), ('MAY', 'MAY'))
+MONTH_CHOICES = (('Jan','Jan'), ('Feb', 'Feb'), ('Mar', 'Mar'), ('Apr', 'Apr'), ('May', 'May'), ('Jun', 'Jun'),
+                 ('Jul', 'Jul'),('Aug', 'Aug'), ('Sep', 'Sep'), ('Oct', 'Oct'), ('Nov', 'Nov'), ('Dec', 'Dec'))
 
 class expenses(models.Model):
     # 'related_name': the way we access from user to todolist is with that specified string

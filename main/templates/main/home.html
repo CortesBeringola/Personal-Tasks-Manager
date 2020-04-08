@@ -10,4 +10,56 @@ Home
 
 {% block content %}
 
+<div class="col-sm-8 mx-auto flex-container">
+<div class="container card mb-3 border">
+  <img class="card-img-top mt-3" src="/static/img/qa.jpg" alt="Card image cap">
+  <div id="welcoming" class="card-body">
+      {% if request.user.is_authenticated %}
+            <h3 class="card-title" align="center"><b><i>Hello, {{request.user.username}}</i></b></h3>
+        {% else %}
+            <h3 class="card-title" align="center" style="color:black;"><b><a href="/login" style="color:#f2722c;"><u>Login</u></a></b></h3>
+      {%endif%}
+
+  </div>
+</div>
+</div>
+
+<div class="col-sm-8 mx-auto flex-container">
+<div class="jumbotron">
+<div class="row w-100">
+        <div class="col-sm-6">
+            <div class="card border-info mx-sm-1 p-3">
+                <div class="card border-info shadow text-info p-3 my-card" ><span class="fa fa-check-circle" aria-hidden="true"></span></div>
+                <div class="text-info text-center mt-3"><h5>Active To do's</h5></div>
+                <div class="text-info text-center mt-2"><h1>{{active_todos}}</h1></div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card border-success mx-sm-1 p-3">
+                <div class="card border-success shadow text-success p-3 my-card"><span class="fa fa-dollar" aria-hidden="true"></span></div>
+                <div class="text-success text-center mt-3"><h5>Expense in {{current_month}}</h5></div>
+                <div class="text-success text-center mt-2"><h1>{{current_expense}}</h1></div>
+            </div>
+        </div>
+</div>
+</div>
+    <div class="jumbotron">
+    <div class="row w-100">
+        <div class="col-sm-12">
+            <div class="card border-danger mx-sm-1 p-3">
+                <div class="card border-danger shadow text-danger p-3 my-card" ><span class="fa fa-signal" aria-hidden="true"></span></div>
+                <div class="text-danger text-center mt-3"><h4>Total Expense</h4></div>
+                <div class="text-danger text-center mt-2">
+                    {% autoescape off %}
+                        {{ plot_div }}
+                    {% endautoescape %}
+                </div>
+            </div>
+        </div>
+</div>
+</div>
+</div>
+
+
+
 {% endblock %}

@@ -18,9 +18,20 @@
                 }
 #navbarbrand h2 {
                 font-family: Comic Sans MS, cursive, sans-serif;
+
 }
 
 #navbarbrand h3 {
+                font-family: Comic Sans MS, cursive, sans-serif;
+}
+
+#navbarbrand a {
+                font-family: Comic Sans MS, cursive, sans-serif;
+                font-size: medium;
+                color:#f2722c;
+}
+
+#welcoming h3 {
                 font-family: Comic Sans MS, cursive, sans-serif;
 }
 
@@ -38,14 +49,16 @@
     color:white;
 }
 
-flex-container {
+.flex-container {
     display: flex;             /* primary flex container */
     flex-direction: row;       /* horizontal alignment of flex items
                                       (default value; can be omitted) */
-    align-items: stretch;      /* will apply equal heights to flex items
+    align-items: center;      /* will apply equal heights to flex items
                                    (default value; can be omitted) */
     height: 100%;
-    justify-content: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
 }
 
 flex-item {
@@ -94,13 +107,18 @@ flex-item {
     color:white;
 }
 
+.btn-success2{
+    background: #56498E;
+    color:white;
+}
+
 #space container{
 
     justify-content: space-between:
 
 }
 
-flex-container2 {
+.flex-container2 {
     display: flex;             /* primary flex container */
     flex-direction: row;       /* horizontal alignment of flex items
                                       (default value; can be omitted) */
@@ -118,4 +136,33 @@ flex-container2 {
 #rf li {
     display:inline;
     padding: 5px 30px;
+}
+
+.card-img-top{
+   width: 100%!important;
+   height: 300px!important;
+   object-fit: cover;
+}
+
+.page-footer {
+    background: #56498E;
+
+}
+
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 4rem;
+  background: #56498E;/* Footer height */
+  background: #56498E;
+}
+
+#page-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+#content-wrap {
+  padding-bottom: 2.5rem;    /* Footer height */
 }

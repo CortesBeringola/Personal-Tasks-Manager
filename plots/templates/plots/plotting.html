@@ -1,18 +1,9 @@
 {% extends "main/base.html" %}
 {% load static %}
 
-{% block styles %}
-    <style>
-        body {
-          background: url('{% static "img/111.jpg" %}') no-repeat center center fixed;
-                }
-    </style>
-{% endblock %}
-
-
 
 {% block title %}
-New List
+My Finance
 {% endblock %}
 
 
@@ -52,37 +43,93 @@ New List
         </div>
     </section>
 </div>
+<br>
 <div class="col-sm-10 mx-auto flex-container">
-    <section class = "row ">
-        <section id="col1" class="column">
-            <table class="table table-striped">
-                <thead align="center">
-                    <tr>
-                        <th scope="col">Expense</th>
-                        <th scope="col">Amount</th>
-                        <th scope="col">Month</th>
-                        <th scope="col">Exact Time</th>
-                    </tr>
-                </thead>
-                <tbody>
-                {% for item in last_ten_expenses%}
-                     <tr>
-                        <td scope="row" align="center">{{item.name}}</td>
-                        <td scope="row" align="center">{{item.amount}}</td>
-                         <td scope="row" align="center">{{item.month}}</td>
-                         <td scope="row" align="center">{{item.added_date}}</td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-        </section>
+    <section class = "row flex-container ">
+        <div class="jumbotron mx-auto">
+        <section class="  flex-containerr">
+                <table class="table table-striped">
+                    <thead align="center">
+                        <tr>
+                            <th scope="col">Expense</th>
+                            <th scope="col">Amount</th>
+                            <th scope="col">Month</th>
+                            <th scope="col">Exact Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for item in last_ten_expenses%}
+                         <tr>
+                            <td scope="row" align="center">{{item.name}}</td>
+                            <td scope="row" align="center">{{item.amount}}</td>
+                             <td scope="row" align="center">{{item.month}}</td>
+                             <td scope="row" align="center">{{item.added_date}}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
 
-        <section id="col2" class="column" >
-            {% autoescape off %}
-            {{ plot_div }}
-            {% endautoescape %}
+        </section>
+</div>
+        <section class="col-sm-7  mx-auto" >
+           <canvas id="myChartline" height="150px"></canvas>
+                <script>
+                    var endpoint = '/api';
+
+                    $.ajax({
+                      method: "GET",
+                      url: endpoint,
+
+                      success: function(data) {
+                        drawLineGraph(data, 'myChartline');
+
+                        console.log("drawing");
+                      },
+                      error: function(error_data) {
+                        console.log(error_data);
+                      }
+                    })
+
+                    function drawLineGraph(data, id) {
+                      var labels = data.labels;
+                      var chartdata = data.chartdata;
+                      var ctx = document.getElementById(id).getContext('2d');
+                      var chart = new Chart(ctx, {
+                        // The type of chart we want to create
+                        type: 'line',
+
+                        // The data for our dataset
+                        data: {
+                          labels: labels,
+                          datasets: [{
+                            label: 'Expense / Month',
+                            backgroundColor: 'rgb(242,114,44)',
+                            borderColor: 'rgb(86,73,142)',
+                            data: chartdata,
+                          }]
+                        },
+
+                        // Configuration options go here
+                        options: {
+                          scales: {
+                            xAxes: [{
+                              display: true
+                            }],
+                            yAxes: [{
+                              ticks: {
+                                beginAtZero: true
+                              }
+                            }]
+                          }
+                        }
+
+                      });
+                    }
+
+                </script>
         </section>
     </section>
+
 </div>
 
 {%endblock%}

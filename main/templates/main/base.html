@@ -2,58 +2,65 @@
 
 <html>
 <head>
-{% block styles %}
-  <style>
-     body {
-       background: url('{% static "img/11.jpg" %}') no-repeat center center fixed;
-     }
-  </style>
-{% endblock %}
-
-        <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
     <title>{% block title %}Rafa's Web Site {% endblock %}</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+    {% block styles %}
+      <style>
+         body {
+           background: url('{% static "img/bb4.jpg" %}') no-repeat center center fixed;
+         }
+      </style>
+    {% endblock %}
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <a id="navbarbrand" class="navbar-brand" href="/"><h3><i>your</i>PersonalAssistant®</h3></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <div id = "rf">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a id="navbarlinks" class="nav-link mt-2" href="/view/"><h5><b><i>My Lists</i></b></h5></a>
-                </li>
-                <li class="nav-item">
-                    <a id="navbarlinks" class="nav-link mt-2" href="/plotting/"><h5><b><i>My Expenses</i></b></h5></a>
-                </li>
-            </ul>
+    <div id="page-container">
+        <div id="content-wrap">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <i><a style="color:#f2722c;" class="navbar-brand mt-3" href="/">
+                     <img src="/static/img/icon2.png" width="45" height="45" alt="">yourPersonalAssistant®</a></i>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div id = "rf">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a style="color:white;"class="nav-link mt-3" href="/view/"> My Lists |</a>
+                        </li>
+                        <li class="nav-item">
+                            <a style="color:white;" class="nav-link mt-3" href="/plotting/"> My Expenses |</a>
+                        </li>
+                    </ul>
+                        </div>
                 </div>
+                {% if request.user.is_authenticated == False %}
+                    <a href="/login" style="color:#f2722c;"><u>Login</u></a>
+                {% else %}
+                    <a class="nav-link" href="/logout/" style="color:#f2722c;">
+                    <span class="fa fa-sign-out center" aria-hidden="true" ></span>{{request.user.username}}</a>
+                {% endif %}
+            </nav>
+            <div id="content", name="content", class="flex-container mt-3">
+                {% block content%}
+
+                {% endblock%}
+            </div>
         </div>
-        <a class="nav-link" href="/logout/" style="color:black;"><i><u>Logout</u></i></a>
-        <span id="navbarlinks" class="navbar-text">
-            {% if request.user.is_authenticated %}
-                <h4><i>Hello, {{request.user.username}}</i></h4>
-            {% else %}
-                <h4><a href="/login"><u>Login</u></a></h4>
-            {%endif%}
-        </span>
-    </nav>
-
-
-    <div id="content", name="content", class="flex-container mt-3">
-        {% block content%}
-        {% endblock%}
+        <footer id="footer">
+            <div class="footer-copyright text-center py-3" style="color:white">© 2020 Copyright:
+                <a style="color:#f2722c;"href="https://yourPersonalAssistant.com/">yourPersonalAssistant.com</a>
+            </div>
+        </footer>
     </div>
-
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>

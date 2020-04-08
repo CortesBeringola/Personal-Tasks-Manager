@@ -2,31 +2,24 @@
 {% load static %}
 
 
-{% block title %}View{% endblock %}
-
-{% block styles %}
-    <style>
-        body {
-          background: url('{% static "img/111.jpg" %}') no-repeat center center fixed;
-                }
-    </style>
+{% block title %}
+My Lists
 {% endblock %}
 
 
+
 {%block content%}
-
-
-
 <div class="col-sm-6 mx-auto flex-container">
     <hr class ="mt-0 mb-4">
         <div id="navbarbrand" align="center"><h2>My Lists</h2></div>
     <hr class ="mt-0 mb-4">
 </div>
+<br>
 <div class="col-sm-11 mx-auto flex-container">
     <section class = "row">
-        <section class="column">
+        <section class="col-sm-6">
             <div>
-            <form method="post" action = '/create/' class = "form-group">
+            <form method="post" action = '/view/' class = "form-group">
                     {% csrf_token %}
                     <div id="test" class= "container input-group">
                         <div class="container input-group-prepend" >
@@ -38,7 +31,7 @@
                 </div>
         </section>
         <section class="col-sm-6 flex-containerr">
-            <div>
+            <div class ="jumbotron">
             <table class="table table-striped">
                 <thead align="center">
                     <tr>
@@ -59,35 +52,4 @@
         </section>
     </section>
 </div>
-
-
-
-
-
-
-
-
-
-
-<!--<div class="container col-sm-6 mx-auto">-->
-<!--    <hr class ="mt-0 mb-4">-->
-<!--        <div id="navbarbrand" align="center"><h2>Your Lists</h2></div>-->
-<!--    <hr class ="mt-0 mb-4">-->
-<!--    <table class="table table-striped" width=30%>-->
-<!--        <thead align="center">-->
-<!--            <tr>-->
-<!--                <th scope="col">#</th>-->
-<!--                <th scope="col">Your Lists</th>-->
-<!--            </tr>-->
-<!--        </thead>-->
-<!--        <tbody>-->
-<!--            {% for td in user.todolist.all %}-->
-<!--            <tr>-->
-<!--                <td scope="row" align="center"><h4>{{ forloop.counter }}</h4></td>-->
-<!--                <td scope="row" align="center"><a href="/{{td.id}}"><h4 style="color:black">{{td.name}}</h4></a></td>-->
-<!--            </tr>-->
-<!--            {% endfor %}-->
-<!--        </tbody>-->
-<!--    </table>-->
-<!--</div>-->
 {%endblock%}
