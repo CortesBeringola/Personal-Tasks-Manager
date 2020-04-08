@@ -17,7 +17,10 @@ Home
       {% if request.user.is_authenticated %}
             <h3 class="card-title" align="center"><b><i>Hello, {{request.user.username}}</i></b></h3>
         {% else %}
-            <h3 class="card-title" align="center" style="color:black;"><b><a href="/login" style="color:#f2722c;"><u>Login</u></a></b></h3>
+      <div class="row">
+            <h3 class="card-title col-sm-5 mx-auto" align="center" style="color:black;"><b><a href="/login" style="color:#f2722c;"><u>Login</u></a></b></h3>
+            <h3 class="card-title col-sm-5 mx-auto" align="center" style="color:black;"><b><a href="/register" style="color:#f2722c;"><u>Sign in</u></a></b></h3>
+          </div>
       {%endif%}
 
   </div>

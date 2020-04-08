@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from idna import unicode
 from plotly.offline import plot
 from .models import expenses
 from .forms import CreateNewExpense
@@ -6,9 +7,10 @@ from datetime import datetime
 import re
 from django.http import HttpResponse, HttpResponseRedirect
 from plotly.graph_objs import Bar
-from rest_framework.views import APIView
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-
+from rest_framework.views import APIView
 
 
 # Create your views here.
@@ -62,13 +64,18 @@ def plotting(response, final_expenses_v02):
         return plot_div
 
 def finance(response):
-    global final_expenses_v02
+    #global final_expenses_v02
     if response.user.is_anonymous:
         form = CreateNewExpense()
         final_expenses_v02 = [['Month', 0.00]]
         return render(response, "plots/plotting.html", {'form': form,
                                                         })
     else:
+
+        last_ten_expenses = response.user.expenses.all().order_by('-id')[:10]
+        final_expenses_v02 = make_a_list(response)
+        plot_div = plotting(response, final_expenses_v02)
+        form = CreateNewExpense()
 
         if response.method == "POST":
             form = CreateNewExpense(response.POST)
@@ -81,11 +88,7 @@ def finance(response):
                 e.save()
                 response.user.expenses.add(e)
                 return HttpResponseRedirect('/plotting/')
-        else:
-            last_ten_expenses = response.user.expenses.all().order_by('-id')[:10]
-            final_expenses_v02 = make_a_list(response)
-            plot_div = plotting(response, final_expenses_v02)
-            form = CreateNewExpense()
+
         return render(response, "plots/plotting.html", {'form': form,
                                                         'plot_div': plot_div,
                                                         'last_ten_expenses': last_ten_expenses,
@@ -93,11 +96,14 @@ def finance(response):
                                                         })
 
 
+
 class ChartData(APIView):
-    authentication_classes = []
-    permission_classes = []
+    authentication_classes = (SessionAuthentication, BasicAuthentication)
+    permission_classes = (IsAuthenticated,)
 
     def get(self, response, format=None):
+        user = unicode(response.user.id)
+        final_expenses_v02 = make_a_list(response)
         x_data, y_data = map(list, zip(*final_expenses_v02))
         data = {
             "labels": x_data,
