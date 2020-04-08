@@ -90,7 +90,7 @@ My Finance
                       }
                     })
 
-                    function drawLineGraph(data, id) {
+                    async function drawLineGraph(data, id) {
                       var labels = data.labels;
                       var chartdata = data.chartdata;
                       var ctx = document.getElementById(id).getContext('2d');
