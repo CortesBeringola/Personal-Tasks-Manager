@@ -54,7 +54,7 @@ def home(response):
         current_expense = current_finance[int(datetime.datetime.now().strftime("%m"))-1][1]
         total_expense = response.user.expenses.all().aggregate(Sum('amount'))
         total_expense = re.search(":(.*?)}", str(total_expense)).group(1)
-        plot_div = plotting(current_finance)
+        plot_div = plotting(response,current_finance)
         x_data, y_data = map(list, zip(*current_finance))
         return render(response, "main/home.html",  {"active_todos": active_todos,
                                                     "current_month": current_month,

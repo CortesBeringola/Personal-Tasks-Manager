@@ -51,8 +51,8 @@ def order_by_month(final_expenses):
 
 
 
-def plotting(final_expenses_v02):
-    if len(final_expenses_v02) == 0:
+def plotting(response, final_expenses_v02):
+    if len(response.user.expenses.values_list('amount')) == 0:
         plot_div = []
         return plot_div
     else:
@@ -84,7 +84,7 @@ def finance(response):
         else:
             last_ten_expenses = response.user.expenses.all().order_by('-id')[:10]
             final_expenses_v02 = make_a_list(response)
-            plot_div = plotting(final_expenses_v02)
+            plot_div = plotting(response, final_expenses_v02)
             form = CreateNewExpense()
         return render(response, "plots/plotting.html", {'form': form,
                                                         'plot_div': plot_div,

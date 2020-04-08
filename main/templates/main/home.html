@@ -10,8 +10,8 @@ Home
 
 {% block content %}
 
-<div class="col-sm-8 mx-auto flex-container">
-<div class="container card mb-3 border">
+<div class="col-sm-8 mx-auto mt-3 flex-container">
+<div class="container card border">
   <img class="card-img-top mt-3" src="/static/img/qa.jpg" alt="Card image cap">
   <div id="welcoming" class="card-body">
       {% if request.user.is_authenticated %}
@@ -24,7 +24,7 @@ Home
 </div>
 </div>
 
-<div class="col-sm-8 mx-auto flex-container">
+<div class="col-sm-8 mx-auto">
 <div class="jumbotron">
 <div class="row w-100">
         <div class="col-sm-6">
@@ -43,8 +43,9 @@ Home
         </div>
 </div>
 </div>
+
     <div class="jumbotron">
-    <div class="row w-100">
+        <div class="row w-100">
         <div class="col-sm-12">
             <div class="card border-danger mx-sm-1 p-3">
                 <div class="card border-danger shadow text-danger p-3 my-card" ><span class="fa fa-signal" aria-hidden="true"></span></div>

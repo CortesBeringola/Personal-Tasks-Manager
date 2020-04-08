@@ -53,13 +53,52 @@
     display: flex;             /* primary flex container */
     flex-direction: row;       /* horizontal alignment of flex items
                                       (default value; can be omitted) */
+    align-items: flex-start;      /* will apply equal heights to flex items
+                                   (default value; can be omitted) */
+    height: 50%;
+    justify-content:center;
+}
+
+.flex-container2 {
+    display: flex;             /* primary flex container */
+    flex-direction: row;       /* horizontal alignment of flex items
+                                      (default value; can be omitted) */
+    align-items: flex-start;      /* will apply equal heights to flex items
+                                   (default value; can be omitted) */
+    height: 10%;
+    justify-content:space-around;
+}
+
+.flex-container3 {
+    display: flex;             /* primary flex container */
+    flex-direction: column;       /* horizontal alignment of flex items
+                                      (default value; can be omitted) */
     align-items: center;      /* will apply equal heights to flex items
                                    (default value; can be omitted) */
-    height: 100%;
-    justify-content: space-around;
-    flex-wrap: wrap;
+    height: 20%;
 
 }
+
+.flex-container3 {
+    display: flex;             /* primary flex container */
+    flex-direction: row;       /* horizontal alignment of flex items
+                                      (default value; can be omitted) */
+    align-items: center;      /* will apply equal heights to flex items
+                                   (default value; can be omitted) */
+    height: 20%;
+    justify-content:space-around;
+}
+
+.flex-container3 {
+    display: flex;             /* primary flex container */
+    flex-direction: row;       /* horizontal alignment of flex items
+                                      (default value; can be omitted) */
+    align-items: center;      /* will apply equal heights to flex items
+                                   (default value; can be omitted) */
+    height: 20%;
+    justify-content:space-around;
+}
+
 
 flex-item {
             /* nested flex container */
