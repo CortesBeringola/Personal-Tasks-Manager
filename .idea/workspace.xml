@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="420ad8a0-71c0-4b0c-8c3a-bf7b53a16c7d" name="Default Changelist" comment="" />
+    <list default="true" id="420ad8a0-71c0-4b0c-8c3a-bf7b53a16c7d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/plots/templates/plots/reports.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plots/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/templates/main/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/main/templates/main/list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/templates/plots/plotting.html" beforeDir="false" afterPath="$PROJECT_DIR$/plots/templates/plots/plotting.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/plots/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/plots/views.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -10,8 +19,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML4 File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -55,15 +65,15 @@
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.css" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="229" y="89" key="SettingsEditor" timestamp="1586145349456">
+    <state x="229" y="89" key="SettingsEditor" timestamp="1586733581538">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="229" y="89" key="SettingsEditor/0.0.1440.900/-1920.-180.1920.1080@0.0.1440.900" timestamp="1585843792583" />
-    <state x="229" y="89" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1586145349456" />
-    <state x="172" y="278" key="com.intellij.ide.util.TipDialog" timestamp="1585933688428">
+    <state x="229" y="89" key="SettingsEditor/0.0.1440.900/-1920.-180.1920.1080@0.0.1440.900" timestamp="1586540723956" />
+    <state x="229" y="89" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1586733581538" />
+    <state x="172" y="278" key="com.intellij.ide.util.TipDialog" timestamp="1586529770473">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="172" y="278" key="com.intellij.ide.util.TipDialog/0.0.1440.900/-1920.-180.1920.1080@0.0.1440.900" timestamp="1585933688428" />
+    <state x="172" y="278" key="com.intellij.ide.util.TipDialog/0.0.1440.900/-1920.-180.1920.1080@0.0.1440.900" timestamp="1586529770473" />
     <state x="172" y="294" key="com.intellij.ide.util.TipDialog/0.23.1440.877/-1858.-157.1858.1057@0.23.1440.877" timestamp="1585929212737" />
     <state x="205" y="374" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1586112066567">
       <screen x="0" y="0" width="1440" height="900" />

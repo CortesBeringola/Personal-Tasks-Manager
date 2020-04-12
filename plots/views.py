@@ -3,7 +3,7 @@ from idna import unicode
 from plotly.offline import plot
 from .models import expenses
 from .forms import CreateNewExpense
-from datetime import datetime
+import datetime
 import re
 from django.http import HttpResponse, HttpResponseRedirect
 from plotly.graph_objs import Bar
@@ -11,6 +11,10 @@ from rest_framework.authentication import SessionAuthentication, BasicAuthentica
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from django.views.generic import View
+from .utils import render_to_pdf
+
+
 
 
 # Create your views here.
@@ -64,18 +68,28 @@ def plotting(response, final_expenses_v02):
         return plot_div
 
 def finance(response):
-    #global final_expenses_v02
+    # If user is anonymous show everything empty
     if response.user.is_anonymous:
         form = CreateNewExpense()
         final_expenses_v02 = [['Month', 0.00]]
         return render(response, "plots/plotting.html", {'form': form,
                                                         })
     else:
-
-        last_ten_expenses = response.user.expenses.all().order_by('-id')[:10]
+        id_month = response.GET.get('id_month')
+        id2_month = response.GET.get('id2_month')
         final_expenses_v02 = make_a_list(response)
         plot_div = plotting(response, final_expenses_v02)
         form = CreateNewExpense()
+        user_id = response.user.id
+        report_info_data = report_info(response, plot_div)
+        last_ten_expenses = response.user.expenses.all()
+        # Check if filter field is empty or not
+        if id_month != '' and id_month is not None:
+            last_ten_expenses = last_ten_expenses.filter(month__icontains=id_month).order_by('-id')[:20]
+        elif id2_month != '' and id2_month is not None:
+            last_ten_expenses = last_ten_expenses.filter(month__icontains=id2_month).order_by('-id')[:20]
+        else:
+            last_ten_expenses = response.user.expenses.all().order_by('-id')[:20]
 
         if response.method == "POST":
             form = CreateNewExpense(response.POST)
@@ -92,9 +106,26 @@ def finance(response):
         return render(response, "plots/plotting.html", {'form': form,
                                                         'plot_div': plot_div,
                                                         'last_ten_expenses': last_ten_expenses,
+                                                        'report_info_data': report_info_data,
 
                                                         })
 
+def report_info(response,plot_div):
+
+    report_info_data = {
+        'report_user': response.user.id,
+        'report_username': response.user,
+        'report_useremail': response.user.email,
+        'report_year': int(datetime.datetime.today().year),
+        'report_month': int(datetime.datetime.today().month),
+        'report_date': int(datetime.datetime.today().day),
+        'report_hour': int(datetime.datetime.today().hour),
+        'report_minute': int(datetime.datetime.today().minute),
+        'last_ten_expenses': response.user.expenses.all().order_by('-id')[:10],
+        'plot_div': plot_div,
+    }
+
+    return report_info_data
 
 
 class ChartData(APIView):
@@ -110,3 +141,17 @@ class ChartData(APIView):
             "chartdata": y_data,
         }
         return Response(data)
+
+class GeneratePdf(View):
+    def get(self, response, *args,**kwargs):
+        final_expenses_v02 = make_a_list(response)
+        plot_div = plotting(response, final_expenses_v02)
+        report_info_data = report_info(response,plot_div)
+        pdf = render_to_pdf('plots/reports.html', report_info_data)
+        if pdf:
+            response = HttpResponse(pdf, content_type='application/pdf')
+            filename = "Hi"
+            content = "inline; filename='%s'" %(filename)
+            response['Content-Disposition'] = content
+            return response
+        return HttpResponse("Not found")

@@ -13,38 +13,94 @@ My Finance
     <hr class ="mt-0 mb-4">
         <div id="navbarbrand" align="center"><h2>My Expenses</h2></div>
     <hr class ="mt-0 mb-4">
+    <br>
     <section >
         <div class = "center-block">
             <form method="post" action = "#" class = "form-group">
                 {% csrf_token %}
                 <div id="test" class= "input-group">
-                    <div class="input-group-prepend mx-auto">
+                    <div class="mx-auto">
+                        <table class="table table-striped">
+                            <thead align="center">
+                                <tr>
+                                    <th scope="col">Expense</th>
+                                    <th scope="col">Amount</th>
+                                    <th scope="col">Month</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                 <tr>
+                                    <td scope="row" align="center"><h4>{{form.name}}</h4></td>
+                                    <td scope="row" align="center"><h4>{{form.amount}}</h4></td>
+                                     <td scope="row" align="center"><h4>{{form.month}}</h4></td>
+                                </tr>
+                            </tbody>
+                        </table>
                         <button type="submit", name="save" class = "btn btn-success1 mb-3">Add Expense</button>
-                            <table class="table table-striped">
-                                <thead align="center">
-                                    <tr>
-                                        <th scope="col">Expense</th>
-                                        <th scope="col">Amount</th>
-                                        <th scope="col">Month</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                     <tr>
-                                        <td scope="row" align="center"><h4>{{form.name}}</h4></td>
-                                        <td scope="row" align="center"><h4>{{form.amount}}</h4></td>
-                                         <td scope="row" align="center"><h4>{{form.month}}</h4></td>
-                                    </tr>
-                                </tbody>
-                            </table>
                     </div>
                 </div>
             </form>
-
         </div>
+        <hr class ="mt-0 mb-4">
     </section>
 </div>
 <br>
+<br>
+<div class="col-sm-10 mx-auto">
+    <form method="GET" action=".">
+        <div class="form-group col-12">
+            <div id="navbarbrand" align="center"><h3>My Filters</h3>
+                <hr class ="mt-0 mb-4">
+                <br>
+                <div class="row">
+                    <section class="col-sm-4 mx-auto" >
+                        <fieldset>
+                            <h5 align="center">
+                             <label>Dropdown list</label>
+                             <select name = "id2_month">
+                                 <option value = "">All</option>
+                                 <option value = "Jan">January</option>
+                                 <option value = "Feb">February</option>
+                                 <option value = "Mar">March</option>
+                                 <option value = "Apr">April</option>
+                                 <option value = "May">May</option>
+                                 <option value = "Jun">June</option>
+                                 <option value = "Jul">July</option>
+                                 <option value = "Aug">August</option>
+                                 <option value = "Sep">September</option>
+                                 <option value = "Oct">October</option>
+                                 <option value = "Nov">November</option>
+                                 <option value = "Dec">December</option>
+                             </select>
+                          </h5>
+                       </fieldset>
+                    </section>
+                    <section class="col-sm-6 mx-auto">
+                        <div class="input-group">
+                            <input class="form-control py-2 border-right-0 border" type="search" name="id_month" placeholder="Type in the month... (Write with same format as in table below)"/>
+                            <span class="input-group-append">
+                                <div class="input-group-text bg-transparent">
+                                    <i class="fa fa-search"></i>
+                                </div>
+                            </span>
+                        </div>
+                    </section>
+                    <section class="col-sm-2 mx-auto">
+                        <button type="submit", name="save" class = "btn btn-success1 mb-3">Filter</button>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </form>
+    <hr class ="mt-0 mb-4">
+</div>
+<br>
+<br>
+
 <div class="col-sm-10 mx-auto flex-container4">
+    <div id="navbarbrand" align="center"><h3>My Records</h3></div>
+    <hr class ="mt-0 mb-4">
+    <br>
     <section class = "row  ">
         <div class="jumbotron mx-auto">
         <section class="  flex-containerr">
@@ -68,9 +124,8 @@ My Finance
                     {% endfor %}
                     </tbody>
                 </table>
-
         </section>
-</div>
+        </div>
         <section class="col-sm-7  mx-auto" >
            <canvas id="myChartline" height="150px"></canvas>
                 <script>
@@ -129,7 +184,17 @@ My Finance
                 </script>
         </section>
     </section>
+</div>
+<div class="col-sm-10 mx-auto flex-container4">
+    <hr class ="mt-0 mb-4">
+    <section class = "row  ">
 
+        <form method="GET" action = "/reports/{{report_info_data.report_user}}/{{report_info_data.report_year}}/{{report_info_data.report_month}}/{{report_info_data.report_date}}/{{report_info_data.report_hour}}/{{report_info_data.report_minute}}">
+            {% csrf_token %}
+            <button type="submit", name="save" class = "btn btn-success2 mb-3">See Report</button>
+        </form>
+    </section>
+    <br>
 </div>
 
 {%endblock%}

@@ -1,0 +1,87 @@
+<html>
+    <head>
+        <title>Title</title>
+        <style type="text/css">
+            body {
+                font-weight: 200;
+                font-size: 14px;
+            }
+            .header {
+                font-size: 20px;
+                font-weight: 100;
+                text-align: center;
+                color: #007cae;
+            }
+            .title {
+                font-size: 22px;
+                font-weight: 100;
+               /* text-align: right;*/
+               padding: 10px 20px 0px 20px;
+            }
+            .title span {
+                color: #007cae;
+            }
+            .details {
+                padding: 10px 20px 0px 20px;
+                text-align: left !important;
+                /*margin-left: 40%;*/
+            }
+            .hrItem {
+                border: none;
+                height: 1px;
+                /* Set the hr color */
+                color: #333; /* old IE */
+                background-color: #fff; /* Modern Browsers */
+            }
+        </style>
+    </head>
+    <body>
+        <div class='wrapper'>
+            <div class='header'>
+                <p class='title'>Expenses Report</p>
+            </div>
+            <div class='details'>
+                Username: {{report_username}} <br/>
+                Email: {{report_useremail }} <br/>
+                Date: {{report_date}}/{{report_month}}/{{report_year}} - {{report_hour}}:{{report_minute}}<br/>
+                <hr class='hrItem' />
+            </div>
+            <br>
+            <div class="col-sm-8 mx-auto flex-container4">
+                <section class = "row  ">
+                    <div class="jumbotron mx-auto">
+                    <section class="  flex-containerr">
+                            <table class="table table-striped">
+                                <thead align="center">
+                                    <tr>
+                                        <th scope="col">Expense</th>
+                                        <th scope="col">Amount</th>
+                                        <th scope="col">Month</th>
+                                        <th scope="col">Exact Time</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {% for item in last_ten_expenses%}
+                                     <tr>
+                                        <td scope="row" align="center">{{item.name}}</td>
+                                        <td scope="row" align="center">{{item.amount}}</td>
+                                         <td scope="row" align="center">{{item.month}}</td>
+                                         <td scope="row" align="center">{{item.added_date}}</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                    </section>
+                    </div>
+                </section>
+            </div>
+            <br>
+            <hr class='hrItem' />
+            <br>
+            {% autoescape off %}
+            {{ plot_div }}
+            {% endautoescape %}
+            <br>
+        </div>
+    </body>
+</html>
